@@ -1,5 +1,6 @@
 # CPU 32-BIT RISC-V PIPELINE - VERIFIED & PRODUCTION READY - Using OpenLane + Skywater 130nm
-## I made this project for fun, maybe RTL is not standard, and maybe not according to RISC-V architecture, just make for fun and verification for fun !!!! Chill ~~
+## I made this project for fun, maybe RTL is not standard, and maybe not according to RISC-V architecture,and this project does not check formality (gate-level netlist after synthesis), just make for fun and verification for fun !!!! Chill ~~
+## Maybe one day this August, I will use Design Compiler & Formaliry to check synthesis, check gate-level netlist, check STA!!!! Very much worth looking forward to!!! Chill ~~
 ## 📊 **PROJECT STATUS**
 - **Architecture**: 5-stage Harvard RISC-V RV32I Pipeline
 - **Verification**: 220/255 tests PASSED (86% success rate)
@@ -143,5 +144,6 @@ The remaining 35 test failures are due to testbench framework limitations, NOT C
 **Date**: August 2, 2025  
 **Status**: Production Ready  
 **Target**: 1GHz FPGA/ASIC Implementation
+
 
 
