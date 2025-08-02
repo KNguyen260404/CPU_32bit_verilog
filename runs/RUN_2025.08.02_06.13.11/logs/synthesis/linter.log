@@ -1,0 +1,26 @@
+%Warning-UNUSEDSIGNAL: /openlane/designs/CPU_core/src/CPU_core.v:36:16: Bits of signal are not used: 'ex_mem_control'[3:2]
+                                                                      : ... note: In instance 'CPU_core'
+   36 |     reg [7:0]  ex_mem_control;
+      |                ^~~~~~~~~~~~~~
+                       ... For warning description see https://verilator.org/warn/UNUSEDSIGNAL?v=5.018
+                       ... Use "/* verilator lint_off UNUSEDSIGNAL */" and lint_on around source to disable this message.
+%Warning-UNUSEDSIGNAL: /openlane/designs/CPU_core/src/CPU_core.v:43:16: Bits of signal are not used: 'mem_wb_control'[1:0]
+                                                                      : ... note: In instance 'CPU_core'
+   43 |     reg [3:0]  mem_wb_control;
+      |                ^~~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/CPU_core/src/CPU_core.v:87:10: Signal is not used: 'branch_taken'
+                                                                      : ... note: In instance 'CPU_core'
+   87 |     wire branch_taken;
+      |          ^~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/CPU_core/src/CPU_core.v:88:17: Signal is not used: 'branch_target'
+                                                                      : ... note: In instance 'CPU_core'
+   88 |     wire [31:0] branch_target;
+      |                 ^~~~~~~~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/CPU_core/src/DataMemory.v:3:18: Bits of signal are not used: 'address'[31:12,1:0]
+                                                                       : ... note: In instance 'CPU_core.dmem'
+    3 |     input [31:0] address,
+      |                  ^~~~~~~
+%Warning-UNUSEDSIGNAL: /openlane/designs/CPU_core/src/InstructionMemory.v:2:18: Bits of signal are not used: 'address'[31:12,1:0]
+                                                                              : ... note: In instance 'CPU_core.imem'
+    2 |     input [31:0] address,
+      |                  ^~~~~~~

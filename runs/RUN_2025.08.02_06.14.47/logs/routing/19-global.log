@@ -1,0 +1,73 @@
+OpenROAD b16bda7e82721d10566ff7e2b68f1ff0be9f9e38 
+Features included (+) or not (-): +Charts +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+define_corners Typical
+read_liberty -corner Typical /home/nguyen2604/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Using 1e-12 for capacitance...
+Using 1e+03 for resistance...
+Using 1e-09 for time...
+Using 1e+00 for voltage...
+Using 1e-03 for current...
+Using 1e-09 for power...
+Using 1e-06 for distance...
+[INFO]: Reading ODB at '/openlane/designs/CPU_core/runs/RUN_2025.08.02_06.14.47/tmp/17-CPU_core.odb'…
+Reading design constraints file at '/openlane/designs/CPU_core/src/CPU_core.sdc'…
+[INFO]: Setting signal min routing layer to: met1 and clock min routing layer to met3. 
+[INFO]: Setting signal max routing layer to: met5 and clock max routing layer to met5. 
+-congestion_iterations 50 -verbose -congestion_report_file /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.14.47/tmp/routing/groute-congestion.rpt
+[INFO GRT-0020] Min routing layer: met1
+[INFO GRT-0021] Max routing layer: met5
+[INFO GRT-0022] Global adjustment: 30%
+[INFO GRT-0023] Grid origin: (0, 0)
+[INFO GRT-0043] No OR_DEFAULT vias defined.
+[INFO GRT-0088] Layer li1     Track-Pitch = 0.4600  line-2-Via Pitch: 0.3400
+[INFO GRT-0088] Layer met1    Track-Pitch = 0.3400  line-2-Via Pitch: 0.3400
+[INFO GRT-0088] Layer met2    Track-Pitch = 0.4600  line-2-Via Pitch: 0.3500
+[INFO GRT-0088] Layer met3    Track-Pitch = 0.6800  line-2-Via Pitch: 0.6150
+[INFO GRT-0088] Layer met4    Track-Pitch = 0.9200  line-2-Via Pitch: 1.0400
+[INFO GRT-0088] Layer met5    Track-Pitch = 3.4000  line-2-Via Pitch: 3.1100
+[INFO GRT-0019] Found 53 clock nets.
+[INFO GRT-0001] Minimum degree: 2
+[INFO GRT-0002] Maximum degree: 21
+[INFO GRT-0003] Macros: 0
+[INFO GRT-0043] No OR_DEFAULT vias defined.
+[INFO GRT-0004] Blockages: 3936
+
+[INFO GRT-0053] Routing resources analysis:
+          Routing      Original      Derated      Resource
+Layer     Direction    Resources     Resources    Reduction (%)
+---------------------------------------------------------------
+li1        Vertical            0             0          0.00%
+met1       Horizontal      60494         29598          51.07%
+met2       Vertical        45782         29299          36.00%
+met3       Horizontal      30220         19554          35.29%
+met4       Vertical        18436          6692          63.70%
+met5       Horizontal       6044          1908          68.43%
+---------------------------------------------------------------
+
+[INFO GRT-0101] Running extra iterations to remove overflow.
+[INFO GRT-0197] Via related to pin nodes: 8608
+[INFO GRT-0198] Via related Steiner nodes: 150
+[INFO GRT-0199] Via filling finished.
+[INFO GRT-0111] Final number of vias: 10914
+[INFO GRT-0112] Final usage 3D: 40041
+
+[INFO GRT-0096] Final congestion report:
+Layer         Resource        Demand        Usage (%)    Max H / Max V / Total Overflow
+---------------------------------------------------------------------------------------
+li1                  0             0            0.00%             0 /  0 /  0
+met1             29598          3219           10.88%             0 /  0 /  0
+met2             29299          3621           12.36%             0 /  0 /  0
+met3             19554           194            0.99%             0 /  0 /  0
+met4              6692           265            3.96%             0 /  0 /  0
+met5              1908             0            0.00%             0 /  0 /  0
+---------------------------------------------------------------------------------------
+Total            87051          7299            8.38%             0 /  0 /  0
+
+[INFO GRT-0018] Total wirelength: 77631 um
+[INFO GRT-0014] Routed nets: 1698
+Setting global connections for newly added cells…
+Writing OpenROAD database to '/openlane/designs/CPU_core/runs/RUN_2025.08.02_06.14.47/tmp/routing/19-global.odb'…
+Writing layout to '/openlane/designs/CPU_core/runs/RUN_2025.08.02_06.14.47/tmp/routing/19-global.def'…
+Writing routing guides to '/openlane/designs/CPU_core/runs/RUN_2025.08.02_06.14.47/tmp/routing/19-global.guide'…

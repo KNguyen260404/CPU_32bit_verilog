@@ -1,0 +1,4 @@
+[WARNING GRT-0026] Missing route to pin _1631_/A1.
+[WARNING GRT-0026] Missing route to pin hold174/X.
+Warning: There are 28 unconstrained endpoints.
+[WARNING] Did not save OpenROAD database!

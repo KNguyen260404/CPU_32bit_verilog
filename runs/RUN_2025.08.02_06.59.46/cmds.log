@@ -1,0 +1,22 @@
+Sat Aug 02 06:59:47 +0000 2025 - Executing "{openroad -exit -no_init -python /openlane/scripts/odbpy/lefutil.py get_metal_layers -o /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/tmp/layers.list /home/nguyen2604/.volare/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef}"
+
+Sat Aug 02 06:59:48 +0000 2025 - Executing "{/openlane/scripts/mergeLef.py -o /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/tmp/merged.nom.lef -i /home/nguyen2604/.volare/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__nom.tlef {/home/nguyen2604/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /home/nguyen2604/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef} |& tee /dev/null}"
+
+Sat Aug 02 06:59:48 +0000 2025 - Executing "{/openlane/scripts/mergeLef.py -o /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/tmp/merged.min.lef -i /home/nguyen2604/.volare/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__min.tlef {/home/nguyen2604/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /home/nguyen2604/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef} |& tee /dev/null}"
+
+Sat Aug 02 06:59:48 +0000 2025 - Executing "{/openlane/scripts/mergeLef.py -o /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/tmp/merged.max.lef -i /home/nguyen2604/.volare/sky130A/libs.ref/sky130_fd_sc_hd/techlef/sky130_fd_sc_hd__max.tlef {/home/nguyen2604/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_ef_sc_hd.lef /home/nguyen2604/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lef/sky130_fd_sc_hd.lef} |& tee /dev/null}"
+
+Sat Aug 02 06:59:49 +0000 2025 - Executing "{python3 /openlane/scripts/mergeLib.py --output /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/tmp/synthesis/merged.lib --name sky130A_merged /home/nguyen2604/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}"
+
+Sat Aug 02 06:59:49 +0000 2025 - Executing "{python3 /openlane/scripts/libtrim.py --cell-file /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/tmp/synthesis/trimmed.lib.exclude.list --output /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/tmp/synthesis/trimmed.lib /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/tmp/synthesis/merged.lib}"
+
+Sat Aug 02 06:59:49 +0000 2025 - Executing "{python3 /openlane/scripts/libtrim.py --cell-file /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/tmp/cts/cts.lib.exclude.list --output /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/tmp/cts/cts.lib /home/nguyen2604/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib}"
+
+Sat Aug 02 06:59:49 +0000 2025 - Executing "{python3 /openlane/scripts/libtrim.py --cell-file /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/tmp/cts/cts-fastest.lib.exclude.list --output /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/tmp/cts/cts-fastest.lib /home/nguyen2604/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ff_n40C_1v95.lib}"
+
+Sat Aug 02 06:59:50 +0000 2025 - Executing "{python3 /openlane/scripts/libtrim.py --cell-file /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/tmp/cts/cts-slowest.lib.exclude.list --output /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/tmp/cts/cts-slowest.lib /home/nguyen2604/.volare/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__ss_100C_1v60.lib}"
+
+Sat Aug 02 06:59:51 +0000 2025 - Executing "{python3 /openlane/scripts/new_tracks.py -i /home/nguyen2604/.volare/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tracks.info -o /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/tmp/routing/config.tracks}"
+
+Sat Aug 02 06:59:51 +0000 2025 - Executing "{echo {OpenLane e73fb3c57e687a0023fcd4dcfd1566ecd478362a} > /openlane/designs/CPU_core/runs/RUN_2025.08.02_06.59.46/OPENLANE_COMMIT}"
+

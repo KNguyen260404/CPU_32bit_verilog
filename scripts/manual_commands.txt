@@ -1,0 +1,61 @@
+# OpenLane Manual Commands for Interactive Mode
+# Copy-paste these commands one by one in OpenLane interactive mode
+
+# Start interactive mode first:
+# ./flow.tcl -design CPU_core -interactive
+
+# ===== MANUAL COMMANDS =====
+
+# Step 1: Prepare design
+prep -design CPU_core
+
+# Step 2: Run synthesis
+run_synthesis
+
+# Step 3: Check synthesis results
+run_sta
+
+# Step 4: Initialize floorplan
+init_floorplan
+
+# Step 5: Place IO
+place_io
+
+# Step 6: Insert tap/decap cells
+tap_decap_or
+
+# Step 7: Generate PDN
+gen_pdn
+
+# Step 8: Global placement
+global_placement
+
+# Step 9: Check timing after placement
+run_sta
+
+# Step 10: Optimize design
+detailed_placement
+
+# Step 11: Clock tree synthesis
+clock_tree_synthesis
+
+# Step 12: Check timing after CTS
+run_sta
+
+# Step 13: Global routing
+global_routing
+
+# Step 14: Detailed routing
+detailed_routing
+
+# Step 15: Final timing check
+run_parasitics_sta
+
+# Step 16: Generate final files
+run_magic
+run_magic_spice_export
+run_lvs
+run_antenna_check
+
+# Step 17: Exit
+exit
