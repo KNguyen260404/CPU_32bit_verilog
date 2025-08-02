@@ -1,4 +1,4 @@
-# CPU 32-BIT RISC-V PIPELINE - VERIFIED & PRODUCTION READY
+# CPU 32-BIT RISC-V PIPELINE - VERIFIED & PRODUCTION READY - Using OpenLane + Skywater 130nm
 
 ## 📊 **PROJECT STATUS**
 - **Architecture**: 5-stage Harvard RISC-V RV32I Pipeline
@@ -14,7 +14,9 @@
 main/
 ├── cpu_core/           # Core CPU modules (VERIFIED)
 ├── testbench/          # Test files (WORKING)
-├── scripts/            # Build & run scripts
+├── scripts/
+├── runs/         # Build & run scripts
+├── rtl/         # Build & run scripts
 ├── documentation/      # Project documentation
 └── README.md          # This file
 ```
@@ -141,3 +143,4 @@ The remaining 35 test failures are due to testbench framework limitations, NOT C
 **Date**: August 2, 2025  
 **Status**: Production Ready  
 **Target**: 1GHz FPGA/ASIC Implementation
+
