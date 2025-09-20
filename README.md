@@ -4,6 +4,7 @@
 ## If you are an expert in RTL, please give me your opinion about RTL in my project via email: vohoangnguyen26042000@gmail.com
 ## Day1 restart : fail 
 ## Day2 restart : maybe need to understands specifications
+## Day3 fix RTL : Iam done in RTL , but i will verify function tomorrow
 ## 📊 **PROJECT STATUS**
 - **Architecture**: 5-stage Harvard RISC-V RV32I Pipeline
 - **Verification**: 220/255 tests PASSED (86% success rate)
@@ -147,6 +148,7 @@ The remaining 35 test failures are due to testbench framework limitations, NOT C
 **Date**: August 2, 2025  
 **Status**: Production Ready  
 **Target**: 1GHz FPGA/ASIC Implementation
+
 
 
 
