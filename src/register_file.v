@@ -67,6 +67,9 @@ module register_file #(
     (* ram_style = RAM_STYLE *)
     reg [DATA_WIDTH-1:0] registers [1:NUM_REGS-1];  // x1-x31 (x0 is hardwired)
     
+    // Loop variable for reset
+    integer i;
+    
     // =================================================================
     // Write Logic (Synchronous with Reset)
     // =================================================================
@@ -75,7 +78,6 @@ module register_file #(
             // Reset all registers (slower but more predictable)
             always @(posedge clk) begin
                 if (!rst_n) begin
-                    integer i;
                     for (i = 1; i < NUM_REGS; i = i + 1) begin
                         registers[i] <= {DATA_WIDTH{1'b0}};
                     end

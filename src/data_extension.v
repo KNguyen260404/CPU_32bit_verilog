@@ -29,8 +29,8 @@ module data_extension (
 );
 
     // Extract byte and halfword from memory data based on address
-    wire [7:0]  selected_byte;
-    wire [15:0] selected_halfword;
+    reg [7:0]  selected_byte;
+    reg [15:0] selected_halfword;
     
     // Byte selection mux
     always @(*) begin
@@ -43,7 +43,9 @@ module data_extension (
     end
     
     // Halfword selection mux  
-    assign selected_halfword = byte_select[1] ? memory_data[31:16] : memory_data[15:0];
+    always @(*) begin
+        selected_halfword = byte_select[1] ? memory_data[31:16] : memory_data[15:0];
+    end
     
     // Extension logic based on load type
     always @(*) begin
