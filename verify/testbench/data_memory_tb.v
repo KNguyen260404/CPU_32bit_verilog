@@ -187,7 +187,7 @@ module data_memory_tb;
             // Test sequential addresses
             for (i = 0; i < 64; i = i + 4) begin
                 test_data = 32'h10000000 + i;
-                test_write_read(i, test_data, $sformatf("Sequential write/read at address %0d", i));
+                test_write_read(i, test_data, "Sequential write/read at address");
             end
             
             // Test various address ranges
@@ -250,17 +250,17 @@ module data_memory_tb;
             $display("\n[%0t] Running Debug Interface Tests...", $time);
             
             // Setup test data via normal interface
-            test_write_read(32'h00000040, 32'hDEBUG001, "Setup debug test data 1");
-            test_write_read(32'h00000044, 32'hDEBUG002, "Setup debug test data 2");
-            test_write_read(32'h00000048, 32'hDEBUG003, "Setup debug test data 3");
+            test_write_read(32'h00000040, 32'hDEB16001, "Setup debug test data 1");
+            test_write_read(32'h00000044, 32'hDEB16002, "Setup debug test data 2");
+            test_write_read(32'h00000048, 32'hDEB16003, "Setup debug test data 3");
             
             // Enable debug interface
             debug_enable = 1'b1;
             
             // Test debug reads
-            test_debug_read(12'h040, 32'hDEBUG001, "Debug read address 0x040");
-            test_debug_read(12'h044, 32'hDEBUG002, "Debug read address 0x044");
-            test_debug_read(12'h048, 32'hDEBUG003, "Debug read address 0x048");
+            test_debug_read(12'h040, 32'hDEB16001, "Debug read address 0x040");
+            test_debug_read(12'h044, 32'hDEB16002, "Debug read address 0x044");
+            test_debug_read(12'h048, 32'hDEB16003, "Debug read address 0x048");
             
             // Test debug interface disabled
             debug_enable = 1'b0;
@@ -313,14 +313,14 @@ module data_memory_tb;
             $display("\n[%0t] Running Boundary Tests...", $time);
             
             // Test last valid address
-            test_write_read(32'h00000FFC, 32'hBOUNDARY, "Last valid address");
+            test_write_read(32'h00000FFC, 32'h12345678, "Last valid addr");
             
             // Test out-of-range addresses
-            test_out_of_range_write(32'h00001000, 32'hSHOULDFAIL, "Out of range write should be ignored");
+            test_out_of_range_write(32'h00001000, 32'h5A0DFADE, "Out of range write should be ignored");
             test_out_of_range_read(32'h00001000, 32'h00000000, "Out of range read should return zero");
             
             // Test maximum address
-            test_out_of_range_write(32'hFFFFFFFF, 32'hSHOULDFAIL, "Maximum address write");
+            test_out_of_range_write(32'hFFFFFFFF, 32'h5A0DFADE, "Maximum address write");
             test_out_of_range_read(32'hFFFFFFFF, 32'h00000000, "Maximum address read");
             
             $display("Boundary Tests Completed");
@@ -333,7 +333,7 @@ module data_memory_tb;
     task test_write_read(
         input [31:0] addr,
         input [31:0] data,
-        input [200*8:1] test_name
+        input [1599:0] test_name
     );
         begin
             test_count = test_count + 1;
@@ -372,7 +372,7 @@ module data_memory_tb;
         input [31:0] addr,
         input [31:0] write_val,
         input [31:0] expected_val,
-        input [200*8:1] test_name
+        input [1599:0] test_name
     );
         begin
             test_count = test_count + 1;
@@ -409,7 +409,7 @@ module data_memory_tb;
     task test_debug_read(
         input [11:0] addr,
         input [31:0] expected_data,
-        input [200*8:1] test_name
+        input [1599:0] test_name
     );
         begin
             test_count = test_count + 1;
@@ -438,7 +438,7 @@ module data_memory_tb;
     task test_out_of_range_write(
         input [31:0] addr,
         input [31:0] data,
-        input [200*8:1] test_name
+        input [1599:0] test_name
     );
         begin
             test_count = test_count + 1;
@@ -467,7 +467,7 @@ module data_memory_tb;
     task test_out_of_range_read(
         input [31:0] addr,
         input [31:0] expected_data,
-        input [200*8:1] test_name
+        input [1599:0] test_name
     );
         begin
             test_count = test_count + 1;
@@ -495,7 +495,7 @@ module data_memory_tb;
     task test_single_signal(
         input [31:0] actual_value,
         input [31:0] expected_value,
-        input [200*8:1] test_name
+        input [1599:0] test_name
     );
         begin
             test_count = test_count + 1;

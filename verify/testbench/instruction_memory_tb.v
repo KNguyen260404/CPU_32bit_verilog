@@ -173,7 +173,7 @@ module instruction_memory_tb;
             // Test sequential addresses
             for (i = 24; i < 64; i = i + 4) begin
                 expected_data = 32'h00000000 + (i/4);
-                test_instruction_read(i, expected_data, $sformatf("Sequential read at address %0d", i));
+                test_instruction_read(i, expected_data, "Sequential read at address");
             end
             
             // Test word alignment - addresses must be word-aligned

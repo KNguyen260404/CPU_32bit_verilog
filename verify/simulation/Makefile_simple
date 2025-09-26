@@ -1,0 +1,158 @@
+# =============================================================================
+# Simple Makefile for RISC-V CPU Testing
+# =============================================================================
+# Usage:
+#   make simple     - Run simple testbench
+#   make comp       - Run comprehensive testbench  
+#   make clean      - Clean generated files
+#   make view       - View waveforms with GTKWave
+# =============================================================================
+
+# Tools
+IVERILOG = iverilog
+VVP = vvp
+GTKWAVE = gtkwave
+
+# Directories
+SRC_DIR = ../../src
+TB_DIR = ../testbench
+RESULT_DIR = ../results
+
+# Source files
+CPU_SOURCES = $(SRC_DIR)/riscv_5stage_cpu.v \
+              $(SRC_DIR)/alu.v \
+              $(SRC_DIR)/branch_decision.v \
+              $(SRC_DIR)/control_unit.v \
+              $(SRC_DIR)/data_extension.v \
+              $(SRC_DIR)/data_memory.v \
+              $(SRC_DIR)/forwarding_unit.v \
+              $(SRC_DIR)/hazard_unit.v \
+              $(SRC_DIR)/immediate_generator.v \
+              $(SRC_DIR)/instruction_memory.v \
+              $(SRC_DIR)/npc_generator.v \
+              $(SRC_DIR)/register_file.v \
+              $(SRC_DIR)/reset_synchronizer.v
+
+# Testbench files
+SIMPLE_TB = $(TB_DIR)/riscv_5stage_cpu_simple_tb.v
+COMP_TB = $(TB_DIR)/riscv_5stage_cpu_comprehensive_tb.v
+EDGE_TB = $(TB_DIR)/riscv_5stage_cpu_edge_tb.v
+
+# Default target
+all: simple
+
+# Simple testbench (recommended)
+simple: simple_test
+
+simple_test: $(RESULT_DIR)/simple_test
+	@echo "========================================="
+	@echo "Running Simple RISC-V CPU Test"
+	@echo "========================================="
+	cd $(RESULT_DIR) && $(VVP) simple_test
+	@echo ""
+	@echo "✅ Simple test completed!"
+	@echo "📊 Check results in $(RESULT_DIR)/"
+	@echo "🔍 View waveforms: make view_simple"
+
+$(RESULT_DIR)/simple_test: $(CPU_SOURCES) $(SIMPLE_TB)
+	@mkdir -p $(RESULT_DIR)
+	@echo "Compiling simple testbench..."
+	$(IVERILOG) -g2012 -I$(SRC_DIR) -o $(RESULT_DIR)/simple_test $(CPU_SOURCES) $(SIMPLE_TB)
+
+# Comprehensive testbench  
+comp: comp_test
+
+comp_test: $(RESULT_DIR)/comp_test
+	@echo "========================================="
+	@echo "Running Comprehensive RISC-V CPU Test"
+	@echo "========================================="
+	cd $(RESULT_DIR) && $(VVP) comp_test
+	@echo ""
+	@echo "✅ Comprehensive test completed!"
+	@echo "📊 Check results in $(RESULT_DIR)/"
+	@echo "🔍 View waveforms: make view_comp"
+
+$(RESULT_DIR)/comp_test: $(CPU_SOURCES) $(COMP_TB)
+	@mkdir -p $(RESULT_DIR)
+	@echo "Compiling comprehensive testbench..."
+	$(IVERILOG) -g2012 -I$(SRC_DIR) -o $(RESULT_DIR)/comp_test $(CPU_SOURCES) $(COMP_TB)
+
+# Edge case testbench
+edge: edge_test
+
+edge_test: $(RESULT_DIR)/edge_test
+	@echo "========================================="
+	@echo "Running Edge Case RISC-V CPU Test"
+	@echo "========================================="
+	cd $(RESULT_DIR) && $(VVP) edge_test
+	@echo ""
+	@echo "✅ Edge case test completed!"
+	@echo "📊 Check results in $(RESULT_DIR)/"
+	@echo "🔍 View waveforms: make view_edge"
+
+$(RESULT_DIR)/edge_test: $(CPU_SOURCES) $(EDGE_TB)
+	@mkdir -p $(RESULT_DIR)
+	@echo "Compiling edge case testbench..."
+	$(IVERILOG) -g2012 -I$(SRC_DIR) -o $(RESULT_DIR)/edge_test $(CPU_SOURCES) $(EDGE_TB)
+
+# View waveforms
+view_simple:
+	@if [ -f $(RESULT_DIR)/riscv_cpu_simple.vcd ]; then \
+		$(GTKWAVE) $(RESULT_DIR)/riscv_cpu_simple.vcd & \
+	else \
+		echo "❌ VCD file not found. Run 'make simple' first."; \
+	fi
+
+view_comp:
+	@if [ -f $(RESULT_DIR)/riscv_cpu_comprehensive.vcd ]; then \
+		$(GTKWAVE) $(RESULT_DIR)/riscv_cpu_comprehensive.vcd & \
+	else \
+		echo "❌ VCD file not found. Run 'make comp' first."; \
+	fi
+
+view_edge:
+	@if [ -f $(RESULT_DIR)/riscv_cpu_edge.vcd ]; then \
+		$(GTKWAVE) $(RESULT_DIR)/riscv_cpu_edge.vcd & \
+	else \
+		echo "❌ VCD file not found. Run 'make edge' first."; \
+	fi
+
+# Quick test (compile and run simple test)
+quick: simple_test
+	@echo "🚀 Quick test completed!"
+
+# Syntax check only
+syntax:
+	@echo "Checking syntax..."
+	$(IVERILOG) -g2012 -I$(SRC_DIR) -t null -o /dev/null $(CPU_SOURCES) $(SIMPLE_TB)
+	@echo "✅ Syntax check passed!"
+
+# Clean generated files
+clean:
+	@echo "Cleaning generated files..."
+	rm -f $(RESULT_DIR)/simple_test $(RESULT_DIR)/comp_test $(RESULT_DIR)/edge_test
+	rm -f $(RESULT_DIR)/*.vcd
+	rm -f $(RESULT_DIR)/*.vvp
+	@echo "✅ Cleaned!"
+
+# Complete test suite
+complete: simple comp edge
+	@echo "🎉 Complete test suite finished!"
+
+# Show help
+help:
+	@echo "Available targets:"
+	@echo "  simple      - Run simple testbench (recommended)"
+	@echo "  comp        - Run comprehensive testbench"
+	@echo "  edge        - Run edge case testbench"
+	@echo "  complete    - Run all testbenches"
+	@echo "  quick       - Quick simple test"
+	@echo "  syntax      - Check syntax only"
+	@echo "  view_simple - View simple test waveforms"
+	@echo "  view_comp   - View comprehensive test waveforms"
+	@echo "  view_edge   - View edge case test waveforms"
+	@echo "  clean       - Clean generated files"
+	@echo "  help        - Show this help"
+
+# Phony targets
+.PHONY: all simple comp edge complete quick syntax clean help view_simple view_comp view_edge simple_test comp_test edge_test
