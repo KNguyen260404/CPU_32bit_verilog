@@ -345,6 +345,8 @@ module data_memory_tb;
             write_enable = 4'b1111;
             
             @(posedge clk);
+            
+            #1; // Small delay before clearing mem_write to ensure proper timing
             mem_write = 1'b0;
             
             // Read operation
